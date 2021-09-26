@@ -1,0 +1,28 @@
+OC.L10N.register(
+    "theming",
+    {
+    "Loading preview…" : "Cargando previsualización...",
+    "Saved" : "Guardóse",
+    "a safe home for all your data" : "un llar seguru pa tolos tos datos",
+    "The given name is too long" : "El nome dau ye perllargu",
+    "The given web address is too long" : "La direición web dada ye perllarga",
+    "The given slogan is too long" : "La conseña dada ye perllarga",
+    "The given color is invalid" : "El color dau ye perllargu",
+    "No file was uploaded" : "Nun se xubieron fichjeros",
+    "No file uploaded" : "Nun se xubieron ficheros",
+    "Unsupported image type" : "Triba non sofitada d'imaxe",
+    "Name" : "Nome",
+    "Web address" : "Direición web",
+    "Web address https://…" : "Direición web https://…",
+    "Slogan" : "Conseña",
+    "Color" : "Color",
+    "Logo" : "Logu",
+    "Upload new logo" : "Xubir logu nuevu",
+    "Login image" : "Imaxe d'aniciu de sesión",
+    "Upload new login background" : "Xubir fondu nuevu d'aniciu de sesión",
+    "Remove background image" : "Desaniciar imaxe de fondu",
+    "You are already using a custom theme" : "Yá tas usando un tema personalizáu",
+    "reset to default" : "reafitar",
+    "Failed to write file to disk." : "Fallu al escribir el ficheru nel discu"
+},
+"nplurals=2; plural=(n != 1);");
