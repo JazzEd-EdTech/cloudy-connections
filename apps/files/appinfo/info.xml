@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<info>
+	<id>files</id>
+	<name>Files</name>
+	<description>File Management</description>
+	<licence>AGPL</licence>
+	<author>Robin Appelman, Vincent Petry</author>
+	<default_enable/>
+	<version>1.4.4</version>
+	<types>
+		<filesystem/>
+	</types>
+	<dependencies>
+		<owncloud min-version="9.0" max-version="9.0" />
+	</dependencies>
+	<documentation>
+		<user>user-files</user>
+	</documentation>
+</info>
