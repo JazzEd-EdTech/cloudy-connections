@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<info>
+	<id>theming</id>
+	<name>Theming</name>
+	<description>Adjust the Nextcloud theme</description>
+	<licence>AGPL</licence>
+	<author>Nextcloud</author>
+	<version>1.4.5</version>
+	<namespace>Theming</namespace>
+	<types>
+		<logging/>
+	</types>
+	<default_enable/>
+	<category>customization</category>
+	<bugs>https://github.com/nextcloud/server/issues/</bugs>
+	<dependencies>
+		<nextcloud min-version="13" max-version="13" />
+	</dependencies>
+
+	<settings>
+		<admin>OCA\Theming\Settings\Admin</admin>
+		<admin-section>OCA\Theming\Settings\Section</admin-section>
+	</settings>
+
+    <repair-steps>
+        <post-migration>
+            <step>OCA\Theming\Migration\ThemingImages</step>
+        </post-migration>
+	</repair-steps>
+</info>
