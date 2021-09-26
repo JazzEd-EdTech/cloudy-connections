@@ -1,0 +1,3 @@
+/*! For license information please see collaboration.js.LICENSE.txt */
+!function(){"use strict";var i={p:"/js/"};i.p=OC.linkTo("files_sharing","js/dist/"),i.nc=btoa(OC.requestToken),window.OCP.Collaboration.registerType("file",{action:function(){return new Promise((function(i,n){OC.dialogs.filepicker(t("files_sharing","Link to a file"),(function(e){OC.Files.getClient().getFileInfo(e).then((function(n,e){i(e.id)})).fail((function(){n(new Error("Cannot get fileinfo"))}))}),!1,null,!1,OC.dialogs.FILEPICKER_TYPE_CHOOSE,"",{allowDirectoryChooser:!0})}))},typeString:t("files_sharing","Link to a file"),typeIconClass:"icon-files-dark"})}();
+//# sourceMappingURL=collaboration.js.map
