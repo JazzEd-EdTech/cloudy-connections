@@ -1,0 +1,163 @@
+/** Calculate luma as it is also used in OCA\Theming\Util::calculateLuma */
+@function luma($c) {
+	$-local-red: red(rgba($c, 1.0));
+	$-local-green: green(rgba($c, 1.0));
+	$-local-blue: blue(rgba($c, 1.0));
+
+	@return (0.2126 * $-local-red  + 0.7152 * $-local-green + 0.0722 * $-local-blue) / 255;
+}
+
+.nc-theming-main-background {
+	background-color: $color-primary;
+}
+
+.nc-theming-main-text {
+	color: $color-primary-text;
+}
+
+.nc-theming-contrast {
+	color: $color-primary-text;
+}
+
+@if (luma($color-primary) > 0.6) {
+	#appmenu:not(.inverted) svg {
+		filter: invert(1);
+	}
+	#appmenu.inverted svg {
+		filter: none;
+	}
+	.searchbox input[type="search"] {
+		background: transparent url('../../../core/img/actions/search.svg') no-repeat 6px center;
+	}
+	#contactsmenu .icon-contacts {
+		background-image: url('../../../core/img/places/contacts-dark.svg');
+	}
+	#settings .icon-settings-white {
+		background-image: url('../../../core/img/actions/settings-dark.svg');
+	}
+	#appmenu .icon-more-white {
+		background-image: url('../../../core/img/actions/more.svg');
+	}
+
+	#body-login {
+
+		input,
+		#alternative-logins li a {
+			border: 1px solid nc-lighten($color-primary-text, 50%);
+		}
+		input.primary,
+		#alternative-logins li a {
+			background-color: $color-primary;
+		}
+		a,
+		label,
+		p,
+		#alternative-logins legend {
+			color: $color-primary-text !important;
+		}
+		input[type='checkbox'].checkbox--white + label:before {
+			border-color: nc-darken($color-primary-element, 40%) !important;
+		}
+		input[type='checkbox'].checkbox--white:not(:disabled):not(:checked) + label:hover:before,
+		input[type='checkbox'].checkbox--white:focus + label:before {
+			border-color: nc-darken($color-primary-element, 30%) !important;
+		}
+		input[type='checkbox'].checkbox--white:checked + label:before {
+			border-color: nc-darken($color-primary-element, 30%) !important;
+			background-image: url('../../../core/img/actions/checkbox-mark.svg');
+			background-color: nc-darken($color-primary-element, 30%) !important;
+		}
+	}
+} @else {
+	#appmenu:not(.inverted) svg {
+		filter: none;
+	}
+	#appmenu.inverted svg {
+		filter: invert(1);
+	}
+}
+
+/* Colorized svg images */
+.icon-file, .icon-filetype-text {
+	background-image: url(./img/core/filetypes/text.svg?v=#{$theming-cachebuster});
+}
+
+.icon-folder, .icon-filetype-folder {
+	background-image: url(./img/core/filetypes/folder.svg?v=#{$theming-cachebuster});
+}
+
+.icon-filetype-folder-drag-accept {
+	background-image: url(./img/core/filetypes/folder-drag-accept.svg?v=#{$theming-cachebuster}) !important;
+}
+
+/* override styles for login screen in guest.css */
+@if variable_exists('theming-logo-mime') and $theming-logo-mime != '' {
+	#header .logo {
+		background-image: url(#{$image-logo});
+		background-size: contain;
+	}
+	#body-login #header .logo {
+		margin-bottom: 22px;
+	}
+}
+
+#body-login,
+#firstrunwizard .firstrunwizard-header,
+#theming-preview {
+	background-image: url(#{$image-login-background});
+	background-color: $color-primary;
+}
+
+input.primary,
+#alternative-logins li a {
+	background-color: $color-primary-element;
+	border: 1px solid $color-primary-text;
+	color: $color-primary-text;
+}
+
+@if (luma($color-primary) > 0.6) {
+	#body-login #submit-wrapper .icon-confirm-white {
+		background-image: url('../../../core/img/actions/confirm.svg');
+	}
+}
+
+// plain background color for login page
+@if $image-login-plain == 'true' {
+	#body-login, #firstrunwizard .firstrunwizard-header, #theming-preview {
+		background-image: none !important;
+		background-color: $color-primary;
+	}
+	#body-login {
+
+		a, label, p {
+			color: $color-primary-text !important;
+		}
+
+	}
+}
+
+@if ($color-primary == #ffffff) {
+	/* show grey border below header */
+	#body-user #header,
+	#body-settings #header,
+	#body-public #header {
+		border-bottom: 1px solid #ebebeb;
+	}
+
+	/* show triangle in header in grey */
+	#appmenu li a.active:before,
+	.header-right #settings #expand:before {
+		border-bottom-color:#ebebeb;
+	}
+
+	/* show border around quota bar in files app */
+	.app-files #quota .quota-container {
+		border: 1px solid #ebebeb;
+	}
+}
+
+@if ($has-legal-links == 'true') {
+	footer {
+		height: 92px;
+	}
+}
