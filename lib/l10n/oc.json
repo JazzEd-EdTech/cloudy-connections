@@ -1,0 +1,28 @@
+{ "translations": {
+    "seconds ago" : "i a qualques segondas",
+    "Help" : "Ajuda",
+    "Settings" : "Paramètres",
+    "Sunday" : "Dimenge",
+    "Monday" : "Diluns",
+    "Tuesday" : "Dimars",
+    "Wednesday" : "Dimècres",
+    "Thursday" : "Dijòus",
+    "Friday" : "Divendres",
+    "Saturday" : "Dissabte",
+    "January" : "Genièr",
+    "February" : "Febrièr",
+    "March" : "Març",
+    "April" : "Abril",
+    "May" : "Mai",
+    "June" : "Junh",
+    "July" : "Julhet",
+    "August" : "Agost",
+    "September" : "Setembre",
+    "October" : "Octòbre",
+    "November" : "Novembre",
+    "December" : "Decembre",
+    "May." : "Mai",
+    "a safe home for all your data" : "un ostal segur per vòstras donadas",
+    "Sharing" : "Partiment"
+},"pluralForm" :"nplurals=2; plural=(n > 1);"
+}
