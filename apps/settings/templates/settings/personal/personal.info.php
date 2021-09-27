@@ -36,8 +36,7 @@ script('settings', [
 ?>
 
 <div id="personal-settings" data-lookup-server-upload-enabled="<?php p($_['lookupServerUploadEnabled'] ? 'true' : 'false') ?>">
-	<h2 class="hidden-visually"><?php p($l->t('Personal info')); ?></h2>
-	<div id="personal-settings-avatar-container" class="personal-settings-container">
+<div id="personal-settings-avatar-container" class="personal-settings-container">
 		<div>
 			<form id="avatarform" class="section" method="post" action="<?php p(\OC::$server->getURLGenerator()->linkToRoute('core.avatar.postAvatar')); ?>">
 				<h3>
@@ -100,7 +99,32 @@ script('settings', [
 
 	<div class="personal-settings-container">
 		<div class="personal-settings-setting-box">
-			<div id="vue-displaynamesection" class="section"></div>
+			<form id="displaynameform" class="section">
+				<h3>
+					<label for="displayname"><?php p($l->t('Full name')); ?></label>
+					<a href="#" class="federation-menu" aria-label="<?php p($l->t('Change privacy level of full name')); ?>">
+						<span class="icon-federation-menu icon-password">
+							<span class="icon-triangle-s"></span>
+						</span>
+					</a>
+				</h3>
+				<input type="text" id="displayname" name="displayname"
+					<?php if (!$_['displayNameChangeSupported']) {
+									print_unescaped('class="hidden"');
+								} ?>
+					   value="<?php p($_['displayName']) ?>"
+					   autocomplete="on" autocapitalize="none" autocorrect="off" />
+				<?php if (!$_['displayNameChangeSupported']) { ?>
+					<span><?php if (isset($_['displayName']) && !empty($_['displayName'])) {
+									p($_['displayName']);
+								} else {
+									p($l->t('No display name set'));
+								} ?></span>
+				<?php } ?>
+				<span class="icon-checkmark hidden"></span>
+				<span class="icon-error hidden" ></span>
+				<input type="hidden" id="displaynamescope" value="<?php p($_['displayNameScope']) ?>">
+			</form>
 		</div>
 		<div class="personal-settings-setting-box">
 			<div id="vue-emailsection" class="section"></div>
@@ -245,7 +269,33 @@ script('settings', [
 
 	<div class="profile-settings-container">
 		<div class="personal-settings-setting-box personal-settings-language-box">
-			<div id="vue-languagesection" class="section"></div>
+			<?php if (isset($_['activelanguage'])) { ?>
+				<form id="language" class="section">
+					<h3>
+						<label for="languageinput"><?php p($l->t('Language'));?></label>
+					</h3>
+					<select id="languageinput" name="lang" data-placeholder="<?php p($l->t('Language'));?>">
+						<option value="<?php p($_['activelanguage']['code']);?>">
+							<?php p($_['activelanguage']['name']);?>
+						</option>
+						<?php foreach ($_['commonlanguages'] as $language):?>
+							<option value="<?php p($language['code']);?>">
+								<?php p($language['name']);?>
+							</option>
+						<?php endforeach;?>
+						<optgroup label="––––––––––"></optgroup>
+						<?php foreach ($_['languages'] as $language):?>
+							<option value="<?php p($language['code']);?>">
+								<?php p($language['name']);?>
+							</option>
+						<?php endforeach;?>
+					</select>
+					<a href="https://www.transifex.com/nextcloud/nextcloud/"
+					   target="_blank" rel="noreferrer noopener">
+						<em><?php p($l->t('Help translate'));?></em>
+					</a>
+				</form>
+			<?php } ?>
 		</div>
 		<div class="personal-settings-setting-box personal-settings-locale-box">
 			<?php if (isset($_['activelocale'])) { ?>

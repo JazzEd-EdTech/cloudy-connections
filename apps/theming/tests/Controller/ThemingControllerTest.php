@@ -823,11 +823,7 @@ class ThemingControllerTest extends TestCase {
 						'sizes' => '16x16'
 					]
 				],
-			'display' => 'standalone',
-			'short_name' => 'Nextcloud',
-			'theme_color' => null,
-			'background_color' => null,
-			'description' => null
+			'display' => 'standalone'
 		]);
 		$response->cacheFor(3600);
 		$this->assertEquals($response, $this->themingController->getManifest('core'));

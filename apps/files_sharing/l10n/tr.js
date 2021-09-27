@@ -177,7 +177,7 @@ OC.L10N.register(
     "Read only" : "Salt okunur",
     "Allow upload and editing" : "Yüklenebilsin ve düzenlenebilsin",
     "File drop (upload only)" : "Dosya bırakma (yalnız yükleme)",
-    "Hide download" : "İndirme gizlensin",
+    "Hide download" : "İndirmeyi gizle",
     "Password protect" : "Parola koruması",
     "Video verification" : "Görüntü doğrulaması",
     "Enter a note for the share recipient" : "Paylaşım alıcısı için bir not yazın",
@@ -230,6 +230,7 @@ OC.L10N.register(
     "For more info, please ask the person who sent this link." : "Ayrıntılı bilgi almak için bu bağlantıyı aldığınız kişi ile görüşün.",
     "Share note" : "Notu paylaş",
     "Toggle grid view" : "Tablo görünümünü değiştir",
+    "Download %s" : "%s indir",
     "Upload files to %s" : "Dosyaları %s konumuna yükle",
     "Note" : "Not",
     "Select or drop files" : "Dosyaları seçin ya da sürükleyip bırakın",
@@ -240,7 +241,6 @@ OC.L10N.register(
     "invalid permissions" : "izinler geçersiz",
     "Can't change permissions for public share links" : "Herkese açık paylaşılan bağlantıların erişim hakları değiştirilemez",
     "Sharing sending the password by Nextcloud Talk failed because Nextcloud Talk is not enabled" : "Nextcloud Talk etkinleştirilmemiş olduğundan, Nextcloud Talk ile paylaşım parolası gönderilemedi",
-    "Name, email, or federated cloud ID …" : "Ad, e-posta ya da birleşik bulut kodu …",
-    "Download %s" : "%s indir"
+    "Name, email, or federated cloud ID …" : "Ad, e-posta ya da birleşik bulut kodu …"
 },
 "nplurals=2; plural=(n > 1);");

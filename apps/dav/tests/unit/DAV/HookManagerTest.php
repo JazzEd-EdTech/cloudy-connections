@@ -38,7 +38,6 @@ use OCP\Defaults;
 use OCP\IL10N;
 use OCP\IUser;
 use OCP\IUserManager;
-use PHPUnit\Framework\MockObject\MockObject;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Test\TestCase;
 
@@ -46,7 +45,7 @@ class HookManagerTest extends TestCase {
 	/** @var IL10N */
 	private $l10n;
 
-	/** @var  EventDispatcherInterface | MockObject  */
+	/** @var  EventDispatcherInterface | \PHPUnit\Framework\MockObject\MockObject  */
 	private $eventDispatcher;
 
 	protected function setUp(): void {
@@ -67,24 +66,24 @@ class HookManagerTest extends TestCase {
 			->getMock();
 		$user->expects($this->once())->method('getUID')->willReturn('newUser');
 
-		/** @var IUserManager | MockObject $userManager */
+		/** @var IUserManager | \PHPUnit\Framework\MockObject\MockObject $userManager */
 		$userManager = $this->getMockBuilder(IUserManager::class)
 			->disableOriginalConstructor()
 			->getMock();
 
-		/** @var SyncService | MockObject $syncService */
+		/** @var SyncService | \PHPUnit\Framework\MockObject\MockObject $syncService */
 		$syncService = $this->getMockBuilder(SyncService::class)
 			->disableOriginalConstructor()
 			->getMock();
 
-		/** @var Defaults | MockObject $syncService */
+		/** @var Defaults | \PHPUnit\Framework\MockObject\MockObject $syncService */
 		$defaults = $this->getMockBuilder(Defaults::class)
 			->disableOriginalConstructor()
 			->getMock();
 
 		$defaults->expects($this->once())->method('getColorPrimary')->willReturn('#745bca');
 
-		/** @var CalDavBackend | MockObject $cal */
+		/** @var CalDavBackend | \PHPUnit\Framework\MockObject\MockObject $cal */
 		$cal = $this->getMockBuilder(CalDavBackend::class)
 			->disableOriginalConstructor()
 			->getMock();
@@ -97,7 +96,7 @@ class HookManagerTest extends TestCase {
 				'components' => 'VEVENT'
 			]);
 
-		/** @var CardDavBackend | MockObject $card */
+		/** @var CardDavBackend | \PHPUnit\Framework\MockObject\MockObject $card */
 		$card = $this->getMockBuilder(CardDavBackend::class)
 			->disableOriginalConstructor()
 			->getMock();
@@ -116,29 +115,29 @@ class HookManagerTest extends TestCase {
 			->getMock();
 		$user->expects($this->once())->method('getUID')->willReturn('newUser');
 
-		/** @var IUserManager | MockObject $userManager */
+		/** @var IUserManager | \PHPUnit\Framework\MockObject\MockObject $userManager */
 		$userManager = $this->getMockBuilder(IUserManager::class)
 			->disableOriginalConstructor()
 			->getMock();
 
-		/** @var SyncService | MockObject $syncService */
+		/** @var SyncService | \PHPUnit\Framework\MockObject\MockObject $syncService */
 		$syncService = $this->getMockBuilder(SyncService::class)
 			->disableOriginalConstructor()
 			->getMock();
 
-		/** @var Defaults | MockObject $syncService */
+		/** @var Defaults | \PHPUnit\Framework\MockObject\MockObject $syncService */
 		$defaults = $this->getMockBuilder(Defaults::class)
 			->disableOriginalConstructor()
 			->getMock();
 
-		/** @var CalDavBackend | MockObject $cal */
+		/** @var CalDavBackend | \PHPUnit\Framework\MockObject\MockObject $cal */
 		$cal = $this->getMockBuilder(CalDavBackend::class)
 			->disableOriginalConstructor()
 			->getMock();
 		$cal->expects($this->once())->method('getCalendarsForUserCount')->willReturn(1);
 		$cal->expects($this->never())->method('createCalendar');
 
-		/** @var CardDavBackend | MockObject $card */
+		/** @var CardDavBackend | \PHPUnit\Framework\MockObject\MockObject $card */
 		$card = $this->getMockBuilder(CardDavBackend::class)
 			->disableOriginalConstructor()
 			->getMock();
@@ -155,23 +154,23 @@ class HookManagerTest extends TestCase {
 			->getMock();
 		$user->expects($this->once())->method('getUID')->willReturn('newUser');
 
-		/** @var IUserManager | MockObject $userManager */
+		/** @var IUserManager | \PHPUnit\Framework\MockObject\MockObject $userManager */
 		$userManager = $this->getMockBuilder(IUserManager::class)
 			->disableOriginalConstructor()
 			->getMock();
 
-		/** @var SyncService | MockObject $syncService */
+		/** @var SyncService | \PHPUnit\Framework\MockObject\MockObject $syncService */
 		$syncService = $this->getMockBuilder(SyncService::class)
 			->disableOriginalConstructor()
 			->getMock();
 
-		/** @var Defaults | MockObject $syncService */
+		/** @var Defaults | \PHPUnit\Framework\MockObject\MockObject $syncService */
 		$defaults = $this->getMockBuilder(Defaults::class)
 			->disableOriginalConstructor()
 			->getMock();
 		$defaults->expects($this->once())->method('getColorPrimary')->willReturn('#745bca');
 
-		/** @var CalDavBackend | MockObject $cal */
+		/** @var CalDavBackend | \PHPUnit\Framework\MockObject\MockObject $cal */
 		$cal = $this->getMockBuilder(CalDavBackend::class)
 			->disableOriginalConstructor()
 			->getMock();
@@ -184,7 +183,7 @@ class HookManagerTest extends TestCase {
 				'components' => 'VEVENT'
 			]);
 
-		/** @var CardDavBackend | MockObject $card */
+		/** @var CardDavBackend | \PHPUnit\Framework\MockObject\MockObject $card */
 		$card = $this->getMockBuilder(CardDavBackend::class)
 			->disableOriginalConstructor()
 			->getMock();
@@ -202,39 +201,35 @@ class HookManagerTest extends TestCase {
 			->disableOriginalConstructor()
 			->getMock();
 
-		/** @var IUserManager | MockObject $userManager */
+		/** @var IUserManager | \PHPUnit\Framework\MockObject\MockObject $userManager */
 		$userManager = $this->getMockBuilder(IUserManager::class)
 			->disableOriginalConstructor()
 			->getMock();
 		$userManager->expects($this->once())->method('get')->willReturn($user);
 
-		/** @var SyncService | MockObject $syncService */
+		/** @var SyncService | \PHPUnit\Framework\MockObject\MockObject $syncService */
 		$syncService = $this->getMockBuilder(SyncService::class)
 			->disableOriginalConstructor()
 			->getMock();
 		$syncService->expects($this->once())
 			->method('deleteUser');
 
-		/** @var Defaults | MockObject $syncService */
+		/** @var Defaults | \PHPUnit\Framework\MockObject\MockObject $syncService */
 		$defaults = $this->getMockBuilder(Defaults::class)
 			->disableOriginalConstructor()
 			->getMock();
 
-		/** @var CalDavBackend | MockObject $cal */
+		/** @var CalDavBackend | \PHPUnit\Framework\MockObject\MockObject $cal */
 		$cal = $this->getMockBuilder(CalDavBackend::class)
 			->disableOriginalConstructor()
 			->getMock();
 		$cal->expects($this->once())->method('getUsersOwnCalendars')->willReturn([
 			['id' => 'personal']
 		]);
-		$cal->expects($this->once())->method('getSubscriptionsForUser')->willReturn([
-			['id' => 'some-subscription']
-		]);
-		$cal->expects($this->once())->method('deleteCalendar')->with('personal');
-		$cal->expects($this->once())->method('deleteSubscription')->with('some-subscription');
+		$cal->expects($this->once())->method('deleteCalendar');
 		$cal->expects($this->once())->method('deleteAllSharesByUser');
 
-		/** @var CardDavBackend | MockObject $card */
+		/** @var CardDavBackend | \PHPUnit\Framework\MockObject\MockObject $card */
 		$card = $this->getMockBuilder(CardDavBackend::class)
 			->disableOriginalConstructor()
 			->getMock();

@@ -99,7 +99,8 @@ class FolderTest extends NodeTest {
 			->method('getUser')
 			->willReturn($this->user);
 
-		$root->method('get')
+		$root->expects($this->once())
+			->method('get')
 			->with('/bar/foo/asd');
 
 		$node = new Folder($root, $view, '/bar/foo');
@@ -121,7 +122,8 @@ class FolderTest extends NodeTest {
 
 		$child = new Folder($root, $view, '/bar/foo/asd');
 
-		$root->method('get')
+		$root->expects($this->once())
+			->method('get')
 			->with('/bar/foo/asd')
 			->willReturn($child);
 
@@ -142,7 +144,8 @@ class FolderTest extends NodeTest {
 			->method('getUser')
 			->willReturn($this->user);
 
-		$root->method('get')
+		$root->expects($this->once())
+			->method('get')
 			->with('/bar/foo/asd')
 			->will($this->throwException(new NotFoundException()));
 
@@ -163,11 +166,13 @@ class FolderTest extends NodeTest {
 			->method('getUser')
 			->willReturn($this->user);
 
-		$view->method('getFileInfo')
+		$view->expects($this->once())
+			->method('getFileInfo')
 			->with('/bar/foo')
 			->willReturn($this->getFileInfo(['permissions' => \OCP\Constants::PERMISSION_ALL]));
 
-		$view->method('mkdir')
+		$view->expects($this->once())
+			->method('mkdir')
 			->with('/bar/foo/asd')
 			->willReturn(true);
 
@@ -189,10 +194,12 @@ class FolderTest extends NodeTest {
 		$root = $this->getMockBuilder(Root::class)
 			->setConstructorArgs([$manager, $view, $this->user, $this->userMountCache, $this->logger, $this->userManager])
 			->getMock();
-		$root->method('getUser')
+		$root->expects($this->any())
+			->method('getUser')
 			->willReturn($this->user);
 
-		$view->method('getFileInfo')
+		$view->expects($this->once())
+			->method('getFileInfo')
 			->with('/bar/foo')
 			->willReturn($this->getFileInfo(['permissions' => \OCP\Constants::PERMISSION_READ]));
 
@@ -213,11 +220,13 @@ class FolderTest extends NodeTest {
 			->method('getUser')
 			->willReturn($this->user);
 
-		$view->method('getFileInfo')
+		$view->expects($this->once())
+			->method('getFileInfo')
 			->with('/bar/foo')
 			->willReturn($this->getFileInfo(['permissions' => \OCP\Constants::PERMISSION_ALL]));
 
-		$view->method('touch')
+		$view->expects($this->once())
+			->method('touch')
 			->with('/bar/foo/asd')
 			->willReturn(true);
 
@@ -239,10 +248,12 @@ class FolderTest extends NodeTest {
 		$root = $this->getMockBuilder(Root::class)
 			->setConstructorArgs([$manager, $view, $this->user, $this->userMountCache, $this->logger, $this->userManager])
 			->getMock();
-		$root->method('getUser')
+		$root->expects($this->any())
+			->method('getUser')
 			->willReturn($this->user);
 
-		$view->method('getFileInfo')
+		$view->expects($this->once())
+			->method('getFileInfo')
 			->with('/bar/foo')
 			->willReturn($this->getFileInfo(['permissions' => \OCP\Constants::PERMISSION_READ]));
 
@@ -259,10 +270,12 @@ class FolderTest extends NodeTest {
 		$root = $this->getMockBuilder(Root::class)
 			->setConstructorArgs([$manager, $view, $this->user, $this->userMountCache, $this->logger, $this->userManager])
 			->getMock();
-		$root->method('getUser')
+		$root->expects($this->any())
+			->method('getUser')
 			->willReturn($this->user);
 
-		$view->method('free_space')
+		$view->expects($this->once())
+			->method('free_space')
 			->with('/bar/foo')
 			->willReturn(100);
 
@@ -488,7 +501,8 @@ class FolderTest extends NodeTest {
 
 		$fileInfo = new CacheEntry(['path' => 'foo/qwerty', 'mimetype' => 'text/plain'], null);
 
-		$storage->method('getCache')
+		$storage->expects($this->once())
+			->method('getCache')
 			->willReturn($cache);
 
 		$this->userMountCache->expects($this->any())
@@ -503,15 +517,18 @@ class FolderTest extends NodeTest {
 				''
 			)]);
 
-		$cache->method('get')
+		$cache->expects($this->once())
+			->method('get')
 			->with(1)
 			->willReturn($fileInfo);
 
-		$root->method('getMountsIn')
+		$root->expects($this->once())
+			->method('getMountsIn')
 			->with('/bar/foo')
 			->willReturn([]);
 
-		$root->method('getMount')
+		$root->expects($this->once())
+			->method('getMount')
 			->with('/bar/foo')
 			->willReturn($mount);
 
@@ -538,7 +555,8 @@ class FolderTest extends NodeTest {
 
 		$fileInfo = new CacheEntry(['path' => '', 'mimetype' => 'text/plain'], null);
 
-		$storage->method('getCache')
+		$storage->expects($this->once())
+			->method('getCache')
 			->willReturn($cache);
 
 		$this->userMountCache->expects($this->any())
@@ -553,11 +571,13 @@ class FolderTest extends NodeTest {
 				''
 			)]);
 
-		$cache->method('get')
+		$cache->expects($this->once())
+			->method('get')
 			->with(1)
 			->willReturn($fileInfo);
 
-		$root->method('getMount')
+		$root->expects($this->once())
+			->method('getMount')
 			->with('/bar')
 			->willReturn($mount);
 
@@ -584,7 +604,8 @@ class FolderTest extends NodeTest {
 
 		$fileInfo = new CacheEntry(['path' => 'foobar', 'mimetype' => 'text/plain'], null);
 
-		$storage->method('getCache')
+		$storage->expects($this->once())
+			->method('getCache')
 			->willReturn($cache);
 
 		$this->userMountCache->expects($this->any())
@@ -599,15 +620,18 @@ class FolderTest extends NodeTest {
 				''
 			)]);
 
-		$cache->method('get')
+		$cache->expects($this->once())
+			->method('get')
 			->with(1)
 			->willReturn($fileInfo);
 
-		$root->method('getMountsIn')
+		$root->expects($this->once())
+			->method('getMountsIn')
 			->with('/bar/foo')
 			->willReturn([]);
 
-		$root->method('getMount')
+		$root->expects($this->once())
+			->method('getMount')
 			->with('/bar/foo')
 			->willReturn($mount);
 
@@ -634,10 +658,12 @@ class FolderTest extends NodeTest {
 
 		$fileInfo = new CacheEntry(['path' => 'foo/qwerty', 'mimetype' => 'text/plain'], null);
 
-		$storage->method('getCache')
+		$storage->expects($this->exactly(2))
+			->method('getCache')
 			->willReturn($cache);
 
-		$this->userMountCache->method('getMountsForFileId')
+		$this->userMountCache->expects($this->any())
+			->method('getMountsForFileId')
 			->with(1)
 			->willReturn([
 				new CachedMountInfo(
@@ -648,20 +674,32 @@ class FolderTest extends NodeTest {
 					1,
 					''
 				),
+				new CachedMountInfo(
+					$this->user,
+					1,
+					0,
+					'/bar/foo/asd/',
+					1,
+					''
+				),
 			]);
 
-		$storage->method('getCache')
+		$storage->expects($this->any())
+			->method('getCache')
 			->willReturn($cache);
 
-		$cache->method('get')
+		$cache->expects($this->any())
+			->method('get')
 			->with(1)
 			->willReturn($fileInfo);
 
-		$root->method('getMountsIn')
+		$root->expects($this->any())
+			->method('getMountsIn')
 			->with('/bar/foo')
 			->willReturn([$mount2]);
 
-		$root->method('getMount')
+		$root->expects($this->once())
+			->method('getMount')
 			->with('/bar/foo')
 			->willReturn($mount1);
 

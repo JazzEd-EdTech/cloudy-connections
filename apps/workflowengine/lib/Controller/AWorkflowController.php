@@ -36,26 +36,20 @@ use OCP\AppFramework\OCS\OCSException;
 use OCP\AppFramework\OCS\OCSForbiddenException;
 use OCP\AppFramework\OCSController;
 use OCP\IRequest;
-use Psr\Log\LoggerInterface;
 
 abstract class AWorkflowController extends OCSController {
 
 	/** @var Manager */
 	protected $manager;
 
-	/** @var LoggerInterface */
-	private $logger;
-
 	public function __construct(
 		$appName,
 		IRequest $request,
-		Manager $manager,
-		LoggerInterface $logger
+		Manager $manager
 	) {
 		parent::__construct($appName, $request);
 
 		$this->manager = $manager;
-		$this->logger = $logger;
 	}
 
 	/**
@@ -121,7 +115,6 @@ abstract class AWorkflowController extends OCSController {
 		} catch (\DomainException $e) {
 			throw new OCSForbiddenException($e->getMessage(), $e);
 		} catch (Exception $e) {
-			$this->logger->error('Error when inserting flow', ['exception' => $e]);
 			throw new OCSException('An internal error occurred', $e->getCode(), $e);
 		}
 	}
@@ -149,7 +142,6 @@ abstract class AWorkflowController extends OCSController {
 		} catch (\DomainException $e) {
 			throw new OCSForbiddenException($e->getMessage(), $e);
 		} catch (Exception $e) {
-			$this->logger->error('Error when updating flow with id ' . $id, ['exception' => $e]);
 			throw new OCSException('An internal error occurred', $e->getCode(), $e);
 		}
 	}
@@ -168,7 +160,6 @@ abstract class AWorkflowController extends OCSController {
 		} catch (\DomainException $e) {
 			throw new OCSForbiddenException($e->getMessage(), $e);
 		} catch (Exception $e) {
-			$this->logger->error('Error when deleting flow with id ' . $id, ['exception' => $e]);
 			throw new OCSException('An internal error occurred', $e->getCode(), $e);
 		}
 	}

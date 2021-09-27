@@ -63,7 +63,7 @@ interface Node extends FileInfo {
 	public function delete();
 
 	/**
-	 * Copy the file or folder to a new location
+	 * Cope the file or folder to a new location
 	 *
 	 * @param string $targetPath the absolute target path
 	 * @return Node

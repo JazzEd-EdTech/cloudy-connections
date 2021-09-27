@@ -142,14 +142,12 @@ class Application {
 					}
 				}
 			} elseif ($input->getArgument('command') !== '_completion' && $input->getArgument('command') !== 'maintenance:install') {
-				$errorOutput = $output->getErrorOutput();
-				$errorOutput->writeln("Nextcloud is not installed - only a limited number of commands are available");
+				$output->writeln("Nextcloud is not installed - only a limited number of commands are available");
 			}
 		} catch (NeedsUpdateException $e) {
 			if ($input->getArgument('command') !== '_completion') {
-				$errorOutput = $output->getErrorOutput();
-				$errorOutput->writeln("Nextcloud or one of the apps require upgrade - only a limited number of commands are available");
-				$errorOutput->writeln("You may use your browser or the occ upgrade command to do the upgrade");
+				$output->writeln("Nextcloud or one of the apps require upgrade - only a limited number of commands are available");
+				$output->writeln("You may use your browser or the occ upgrade command to do the upgrade");
 			}
 		}
 

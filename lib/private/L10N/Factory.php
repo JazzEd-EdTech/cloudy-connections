@@ -619,18 +619,18 @@ class Factory implements IFactory {
 			$potentialName = $l->t('__language_name__');
 
 			return [
-				'commonLanguages' => [[
+				'commonlanguages' => [[
 					'code' => $forceLanguage,
 					'name' => $potentialName,
 				]],
-				'otherLanguages' => [],
+				'languages' => [],
 			];
 		}
 
 		$languageCodes = $this->findAvailableLanguages();
 
 		$commonLanguages = [];
-		$otherLanguages = [];
+		$languages = [];
 
 		foreach ($languageCodes as $lang) {
 			$l = $this->get('lib', $lang);
@@ -658,14 +658,14 @@ class Factory implements IFactory {
 			if (in_array($lang, self::COMMON_LANGUAGE_CODES)) {
 				$commonLanguages[array_search($lang, self::COMMON_LANGUAGE_CODES)] = $ln;
 			} else {
-				$otherLanguages[] = $ln;
+				$languages[] = $ln;
 			}
 		}
 
 		ksort($commonLanguages);
 
 		// sort now by displayed language not the iso-code
-		usort($otherLanguages, function ($a, $b) {
+		usort($languages, function ($a, $b) {
 			if ($a['code'] === $a['name'] && $b['code'] !== $b['name']) {
 				// If a doesn't have a name, but b does, list b before a
 				return 1;
@@ -680,8 +680,8 @@ class Factory implements IFactory {
 
 		return [
 			// reset indexes
-			'commonLanguages' => array_values($commonLanguages),
-			'otherLanguages' => $otherLanguages
+			'commonlanguages' => array_values($commonLanguages),
+			'languages' => $languages
 		];
 	}
 }

@@ -179,12 +179,6 @@ class UrlGeneratorTest extends \Test\TestCase {
 		$this->assertEquals($expected, $actual);
 	}
 
-	public function testGetWebroot() {
-		\OC::$WEBROOT = '/nextcloud';
-		$actual = $this->urlGenerator->getWebroot();
-		$this->assertEquals(\OC::$WEBROOT, $actual);
-	}
-
 	/**
 	 * @dataProvider provideOCSRoutes
 	 */

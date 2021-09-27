@@ -316,12 +316,12 @@ abstract class Common implements Storage, ILockingStorage, IWriteStreamStorage {
 	}
 
 	/**
-	 * Check if a file or folder has been updated since $time
+	 * check if a file or folder has been updated since $time
 	 *
 	 * The method is only used to check if the cache needs to be updated. Storage backends that don't support checking
 	 * the mtime should always return false here. As a result storage implementations that always return false expect
 	 * exclusive access to the backend and will not pick up files that have been added in a way that circumvents
-	 * Nextcloud filesystem.
+	 * ownClouds filesystem.
 	 *
 	 * @param string $path
 	 * @param int $time
@@ -612,7 +612,6 @@ abstract class Common implements Storage, ILockingStorage, IWriteStreamStorage {
 			$dh = $sourceStorage->opendir($sourceInternalPath);
 			$result = $this->mkdir($targetInternalPath);
 			if (is_resource($dh)) {
-				$result = true;
 				while ($result and ($file = readdir($dh)) !== false) {
 					if (!Filesystem::isIgnoredDir($file)) {
 						$result &= $this->copyFromStorage($sourceStorage, $sourceInternalPath . '/' . $file, $targetInternalPath . '/' . $file);

@@ -25,8 +25,7 @@ for app in ${REPODIR}/apps/*; do
     if [[ -d $app ]]; then
         if [[ -e ${app}/composer/composer.json ]]; then
             echo
-            echo "Regenerating composer files for ${app}"
-            $COMPOSER_COMMAND i --no-dev -d ${app}/composer
+            echo "Regenerating autoloader for ${app}"
             $COMPOSER_COMMAND dump-autoload -d ${app}/composer
         fi
     fi
