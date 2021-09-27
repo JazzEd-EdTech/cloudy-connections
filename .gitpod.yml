@@ -1,0 +1,7 @@
+tasks:
+  - init: git submodule update --init && ./occ maintenance:install && ./occ config:system:set trusted_domains 1 --value=*.gitpod.io
+    command: php -S 0.0.0.0:8000
+
+ports:
+  - port: 8000
+    onOpen: open-preview
