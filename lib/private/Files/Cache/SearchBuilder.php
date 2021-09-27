@@ -39,7 +39,6 @@ use OCP\Files\Search\ISearchOrder;
 class SearchBuilder {
 	protected static $searchOperatorMap = [
 		ISearchComparison::COMPARE_LIKE => 'iLike',
-		ISearchComparison::COMPARE_LIKE_CASE_SENSITIVE => 'like',
 		ISearchComparison::COMPARE_EQUAL => 'eq',
 		ISearchComparison::COMPARE_GREATER_THAN => 'gt',
 		ISearchComparison::COMPARE_GREATER_THAN_EQUAL => 'gte',
@@ -49,7 +48,6 @@ class SearchBuilder {
 
 	protected static $searchOperatorNegativeMap = [
 		ISearchComparison::COMPARE_LIKE => 'notLike',
-		ISearchComparison::COMPARE_LIKE_CASE_SENSITIVE => 'notLike',
 		ISearchComparison::COMPARE_EQUAL => 'neq',
 		ISearchComparison::COMPARE_GREATER_THAN => 'lte',
 		ISearchComparison::COMPARE_GREATER_THAN_EQUAL => 'lt',
@@ -188,8 +186,8 @@ class SearchBuilder {
 		$comparisons = [
 			'mimetype' => ['eq', 'like'],
 			'mtime' => ['eq', 'gt', 'lt', 'gte', 'lte'],
-			'name' => ['eq', 'like', 'clike'],
-			'path' => ['eq', 'like', 'clike'],
+			'name' => ['eq', 'like'],
+			'path' => ['eq', 'like'],
 			'size' => ['eq', 'gt', 'lt', 'gte', 'lte'],
 			'tagname' => ['eq', 'like'],
 			'favorite' => ['eq'],

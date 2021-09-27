@@ -172,7 +172,7 @@ class VerifyUserData extends Job {
 		if (empty($this->lookupServerUrl) ||
 			$this->config->getAppValue('files_sharing', 'lookupServerUploadEnabled', 'yes') !== 'yes' ||
 			$this->config->getSystemValue('has_internet_connection', true) === false) {
-			return true;
+			return false;
 		}
 
 		$user = $this->userManager->get($argument['uid']);

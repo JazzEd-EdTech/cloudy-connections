@@ -124,7 +124,6 @@ OC.L10N.register(
     "Could not lock path" : "Não foi possível bloquear o caminho",
     "Wrong or no update parameter given" : "O parâmetro da atualização fornecido está errado ou não existe",
     "Cannot change permissions for public share links" : "Não foi possível alterar as permissões para links de compartilhamento público",
-    "\"Sending the password by Nextcloud Talk\" for sharing a file or folder failed because Nextcloud Talk is not enabled." : "O \"envio da senha pelo Bate Papo Nextcloud\" para compartilhar um arquivo ou pasta falhou porque o Bate Papo Nextcloud não está habilitado. ",
     "shared by %s" : "compartilhado por %s",
     "Download all files" : "Baixar todos os arquivos",
     "Direct link" : "Link direto",
@@ -230,6 +229,7 @@ OC.L10N.register(
     "For more info, please ask the person who sent this link." : "Para mais informações, pergunte à pessoa que lhe enviou o link.",
     "Share note" : "Anotação de compartilhamento",
     "Toggle grid view" : "Alternar visualização de grade",
+    "Download %s" : "Baixar %s",
     "Upload files to %s" : "Enviar arquivos para %s",
     "Note" : "Nota",
     "Select or drop files" : "Selecione ou solte arquivos",
@@ -240,7 +240,6 @@ OC.L10N.register(
     "invalid permissions" : "permissões inválidas",
     "Can't change permissions for public share links" : "Não foi possível alterar as permissões para links de compartilhamento público",
     "Sharing sending the password by Nextcloud Talk failed because Nextcloud Talk is not enabled" : "O compartilhamento falhou ao enviar a senha ao Nextcloud Talk porque este não está ativado",
-    "Name, email, or federated cloud ID …" : "Nome, e-mail, ou ID da nuvem federada...",
-    "Download %s" : "Baixar %s"
+    "Name, email, or federated cloud ID …" : "Nome, e-mail, ou ID da nuvem federada..."
 },
 "nplurals=2; plural=(n > 1);");

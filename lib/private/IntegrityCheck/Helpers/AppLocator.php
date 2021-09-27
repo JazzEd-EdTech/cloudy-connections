@@ -29,7 +29,7 @@ namespace OC\IntegrityCheck\Helpers;
 /**
  * Class AppLocator provides a non-static helper for OC_App::getPath($appId)
  * it is not possible to use IAppManager at this point as IAppManager has a
- * dependency on a running Nextcloud.
+ * dependency on a running ownCloud.
  *
  * @package OC\IntegrityCheck\Helpers
  */
