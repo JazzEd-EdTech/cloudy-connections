@@ -224,11 +224,11 @@ const actions = {
 				cancelToken: searchRequestCancelSource.token,
 			})
 				.then((response) => {
-					const usersCount = Object.keys(response.data.ocs.data.users).length
-					if (usersCount > 0) {
+					if (Object.keys(response.data.ocs.data.users).length > 0) {
 						context.commit('appendUsers', response.data.ocs.data.users)
+						return Object.keys(response.data.ocs.data.users).length >= limit
 					}
-					return usersCount
+					return false
 				})
 				.catch((error) => {
 					if (!axios.isCancel(error)) {
@@ -241,11 +241,11 @@ const actions = {
 			cancelToken: searchRequestCancelSource.token,
 		})
 			.then((response) => {
-				const usersCount = Object.keys(response.data.ocs.data.users).length
-				if (usersCount > 0) {
+				if (Object.keys(response.data.ocs.data.users).length > 0) {
 					context.commit('appendUsers', response.data.ocs.data.users)
+					return Object.keys(response.data.ocs.data.users).length >= limit
 				}
-				return usersCount
+				return false
 			})
 			.catch((error) => {
 				if (!axios.isCancel(error)) {

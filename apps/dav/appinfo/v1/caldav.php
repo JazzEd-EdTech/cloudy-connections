@@ -52,7 +52,6 @@ $principalBackend = new Principal(
 	\OC::$server->query(\OCA\DAV\CalDAV\Proxy\ProxyMapper::class),
 	\OC::$server->get(KnownUserService::class),
 	\OC::$server->getConfig(),
-	\OC::$server->getL10NFactory(),
 	'principals/'
 );
 $db = \OC::$server->getDatabaseConnection();

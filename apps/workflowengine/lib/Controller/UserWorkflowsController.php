@@ -35,7 +35,6 @@ use OCP\AppFramework\OCS\OCSForbiddenException;
 use OCP\IRequest;
 use OCP\IUserSession;
 use OCP\WorkflowEngine\IManager;
-use Psr\Log\LoggerInterface;
 
 class UserWorkflowsController extends AWorkflowController {
 
@@ -49,10 +48,9 @@ class UserWorkflowsController extends AWorkflowController {
 		$appName,
 		IRequest $request,
 		Manager $manager,
-		IUserSession $session,
-		LoggerInterface $logger
+		IUserSession $session
 	) {
-		parent::__construct($appName, $request, $manager, $logger);
+		parent::__construct($appName, $request, $manager);
 
 		$this->session = $session;
 	}

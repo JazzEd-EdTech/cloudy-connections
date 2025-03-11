@@ -124,11 +124,9 @@ OC.L10N.register(
     "Could not lock path" : "No se ha podido bloquear la ruta",
     "Wrong or no update parameter given" : "No se ha suministrado un parametro correcto",
     "Cannot change permissions for public share links" : "No se puede cambiar los permisos para enlaces compartidos públicos",
-    "\"Sending the password by Nextcloud Talk\" for sharing a file or folder failed because Nextcloud Talk is not enabled." : "\"El envío de la contraseña por Nextcloud Talk\" para compartir un archivo o carpeta falló porque Nextcloud Talk no está habilitado.",
     "shared by %s" : "compartido por %s",
     "Download all files" : "Descargar todos los archivos",
     "Direct link" : "Enlace directo",
-    "Add to your %s" : "Añadir a tu %s",
     "Share API is disabled" : "El API de compartir está deshabilitado",
     "File sharing" : "Compartir archivos",
     "Share will expire tomorrow" : "El recurso compartido caducará mañana",
@@ -230,7 +228,7 @@ OC.L10N.register(
     "For more info, please ask the person who sent this link." : "Para más información, pregunte a la persona que le envió el enlace.",
     "Share note" : "Compartir nota",
     "Toggle grid view" : "Alternar vista de cuadrícula",
-    "%s" : "%s",
+    "Download %s" : "Descargar %s",
     "Upload files to %s" : "Subir archivos a %s",
     "Note" : "Nota",
     "Select or drop files" : "Seleccione o arrastre y suelte archivos",
@@ -241,7 +239,6 @@ OC.L10N.register(
     "invalid permissions" : "Permisos incorrectos",
     "Can't change permissions for public share links" : "No se pueden cambiar los permisos para los enlaces de recursos compartidos públicos",
     "Sharing sending the password by Nextcloud Talk failed because Nextcloud Talk is not enabled" : "Compartir enviando la contraseña por Nextcloud Talk ha fallado porque Nextcloud Talk no está activado",
-    "Name, email, or federated cloud ID …" : "Nombre, correo electrónico o ID de nube federada …",
-    "Download %s" : "Descargar %s"
+    "Name, email, or federated cloud ID …" : "Nombre, correo electrónico o ID de nube federada …"
 },
 "nplurals=2; plural=(n != 1);");

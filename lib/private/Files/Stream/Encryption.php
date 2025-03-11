@@ -212,7 +212,7 @@ class Encryption extends Wrapper {
 			} else {
 				$wrapped = fopen($protocol . '://', $mode, false, $context);
 			}
-		} catch (\Exception $e) {
+		} catch (\BadMethodCallException $e) {
 			stream_wrapper_unregister($protocol);
 			throw $e;
 		}

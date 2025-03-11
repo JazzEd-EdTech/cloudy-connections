@@ -107,10 +107,6 @@ class BackgroundJobTest extends TestCase {
 		$job->expects($this->once())
 			->method('checkAppUpdates');
 
-		$this->config->method('getSystemValueBool')
-			->with('debug', false)
-			->willReturn(true);
-
 		self::invokePrivate($job, 'run', [null]);
 	}
 

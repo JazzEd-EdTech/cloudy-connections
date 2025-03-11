@@ -562,13 +562,9 @@ class OC_Image implements \OCP\IImage {
 			case IMAGETYPE_GIF:
 				if (imagetypes() & IMG_GIF) {
 					$this->resource = imagecreatefromgif($imagePath);
-					if ($this->resource) {
-						// Preserve transparency
-						imagealphablending($this->resource, true);
-						imagesavealpha($this->resource, true);
-					} else {
-						$this->logger->debug('OC_Image->loadFromFile, GIF image not valid: ' . $imagePath, ['app' => 'core']);
-					}
+					// Preserve transparency
+					imagealphablending($this->resource, true);
+					imagesavealpha($this->resource, true);
 				} else {
 					$this->logger->debug('OC_Image->loadFromFile, GIF images not supported: ' . $imagePath, ['app' => 'core']);
 				}
@@ -587,13 +583,9 @@ class OC_Image implements \OCP\IImage {
 			case IMAGETYPE_PNG:
 				if (imagetypes() & IMG_PNG) {
 					$this->resource = @imagecreatefrompng($imagePath);
-					if ($this->resource) {
-						// Preserve transparency
-						imagealphablending($this->resource, true);
-						imagesavealpha($this->resource, true);
-					} else {
-						$this->logger->debug('OC_Image->loadFromFile, PNG image not valid: ' . $imagePath, ['app' => 'core']);
-					}
+					// Preserve transparency
+					imagealphablending($this->resource, true);
+					imagesavealpha($this->resource, true);
 				} else {
 					$this->logger->debug('OC_Image->loadFromFile, PNG images not supported: ' . $imagePath, ['app' => 'core']);
 				}
@@ -649,7 +641,7 @@ class OC_Image implements \OCP\IImage {
 			default:
 
 				// this is mostly file created from encrypted file
-				$this->resource = imagecreatefromstring(file_get_contents($imagePath));
+				$this->resource = imagecreatefromstring(\OC\Files\Filesystem::file_get_contents(\OC\Files\Filesystem::getLocalPath($imagePath)));
 				$iType = IMAGETYPE_PNG;
 				$this->logger->debug('OC_Image->loadFromFile, Default', ['app' => 'core']);
 				break;
@@ -1155,6 +1147,16 @@ class OC_Image implements \OCP\IImage {
 		$image->resource = $this->resizeNew($maxSize);
 
 		return $image;
+	}
+
+
+	/**
+	 * Resizes the image preserving ratio, returning a new copy
+	 *
+	 * @param integer $maxSize The maximum size of either the width or height.
+	 * @return bool
+	 */
+	public function copyResize($maxSize): IImage {
 	}
 
 	/**

@@ -345,9 +345,7 @@ export default {
 				label: cur,
 			}), [])
 			// add default presets
-			if (this.settings.allowUnlimitedQuota) {
-				quotaPreset.unshift(this.unlimitedQuota)
-			}
+			quotaPreset.unshift(this.unlimitedQuota)
 			quotaPreset.unshift(this.defaultQuota)
 			return quotaPreset
 		},
@@ -369,11 +367,11 @@ export default {
 			return [
 				{
 					label: t('settings', 'Common languages'),
-					languages: this.settings.languages.commonLanguages,
+					languages: this.settings.languages.commonlanguages,
 				},
 				{
-					label: t('settings', 'Other languages'),
-					languages: this.settings.languages.otherLanguages,
+					label: t('settings', 'All languages'),
+					languages: this.settings.languages.languages,
 				},
 			]
 		},
@@ -461,13 +459,8 @@ export default {
 				group: this.selectedGroup !== 'disabled' ? this.selectedGroup : '',
 				search: this.searchQuery,
 			})
-				.then((usersCount) => {
-					if (usersCount > 0) {
-						$state.loaded()
-					}
-					if (usersCount < this.usersLimit) {
-						$state.complete()
-					}
+				.then((response) => {
+					response ? $state.loaded() : $state.complete()
 				})
 		},
 

@@ -23,7 +23,6 @@
 namespace OCA\Encryption\Command;
 
 use OC\Files\View;
-use OC\ServerNotAvailableException;
 use OCA\Encryption\Util;
 use OCP\Files\IRootFolder;
 use OCP\HintException;
@@ -54,9 +53,6 @@ class FixEncryptedVersion extends Command {
 	/** @var View  */
 	private $view;
 
-	/** @var bool */
-	private $supportLegacy;
-
 	public function __construct(
 		IConfig $config,
 		ILogger $logger,
@@ -71,8 +67,6 @@ class FixEncryptedVersion extends Command {
 		$this->userManager = $userManager;
 		$this->util = $util;
 		$this->view = $view;
-		$this->supportLegacy = false;
-
 		parent::__construct();
 	}
 
@@ -101,7 +95,6 @@ class FixEncryptedVersion extends Command {
 	 */
 	protected function execute(InputInterface $input, OutputInterface $output): int {
 		$skipSignatureCheck = $this->config->getSystemValue('encryption_skip_signature_check', false);
-		$this->supportLegacy = $this->config->getSystemValueBool('encryption.legacy_format_support', false);
 
 		if ($skipSignatureCheck) {
 			$output->writeln("<error>Repairing is not possible when \"encryption_skip_signature_check\" is set. Please disable this flag in the configuration.</error>\n");
@@ -194,14 +187,6 @@ class FixEncryptedVersion extends Command {
 			\fclose($handle);
 
 			return true;
-		} catch (ServerNotAvailableException $e) {
-			// not a "bad signature" error and likely "legacy cipher" exception
-			// this could mean that the file is maybe not encrypted but the encrypted version is set
-			if (!$this->supportLegacy && $ignoreCorrectEncVersionCall === true) {
-				$output->writeln("<info>Attempting to fix the path: \"$path\"</info>");
-				return $this->correctEncryptedVersion($path, $output, true);
-			}
-			return false;
 		} catch (HintException $e) {
 			$this->logger->warning("Issue: " . $e->getMessage());
 			//If allowOnce is set to false, this becomes recursive.
@@ -217,10 +202,9 @@ class FixEncryptedVersion extends Command {
 	/**
 	 * @param string $path
 	 * @param OutputInterface $output
-	 * @param bool $includeZero whether to try zero version for unencrypted file
 	 * @return bool
 	 */
-	private function correctEncryptedVersion($path, OutputInterface $output, bool $includeZero = false): bool {
+	private function correctEncryptedVersion($path, OutputInterface $output): bool {
 		$fileInfo = $this->view->getFileInfo($path);
 		if (!$fileInfo) {
 			$output->writeln("<warning>File info not found for file: \"$path\"</warning>");
@@ -247,17 +231,6 @@ class FixEncryptedVersion extends Command {
 		// Save original encrypted version so we can restore it if decryption fails with all version
 		$originalEncryptedVersion = $encryptedVersion;
 		if ($encryptedVersion >= 0) {
-			if ($includeZero) {
-				// try with zero first
-				$cacheInfo = ['encryptedVersion' => 0, 'encrypted' => 0];
-				$cache->put($fileCache->getPath(), $cacheInfo);
-				$output->writeln("<info>Set the encrypted version to 0 (unencrypted)</info>");
-				if ($this->verifyFileContent($path, $output, false) === true) {
-					$output->writeln("<info>Fixed the file: \"$path\" with version 0 (unencrypted)</info>");
-					return true;
-				}
-			}
-
 			//test by decrementing the value till 1 and if nothing works try incrementing
 			$encryptedVersion--;
 			while ($encryptedVersion > 0) {

@@ -92,7 +92,7 @@ class TwoFactorMiddleware extends Middleware {
 			&& !$this->reflector->hasAnnotation('TwoFactorSetUpDoneRequired')) {
 			$providers = $this->twoFactorManager->getProviderSet($this->userSession->getUser());
 
-			if (!($providers->getPrimaryProviders() === [] && !$providers->isProviderMissing())) {
+			if (!($providers->getProviders() === [] && !$providers->isProviderMissing())) {
 				throw new TwoFactorAuthRequiredException();
 			}
 		}

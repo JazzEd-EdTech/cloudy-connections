@@ -228,27 +228,14 @@ class ExceptionSerializer {
 		}, $filteredTrace);
 	}
 
-	private function encodeArg($arg, $nestingLevel = 5) {
+	private function encodeArg($arg) {
 		if (is_object($arg)) {
-			if ($nestingLevel === 0) {
-				return [
-					'__class__' => get_class($arg),
-					'__properties__' => 'Encoding skipped as the maximum nesting level was reached',
-				];
-			}
-
-			$objectInfo = [ '__class__' => get_class($arg) ];
-			$objectVars = get_object_vars($arg);
-			return array_map(function ($arg) use ($nestingLevel) {
-				return $this->encodeArg($arg, $nestingLevel - 1);
-			}, array_merge($objectInfo, $objectVars));
+			$data = get_object_vars($arg);
+			$data['__class__'] = get_class($arg);
+			return array_map([$this, 'encodeArg'], $data);
 		}
 
 		if (is_array($arg)) {
-			if ($nestingLevel === 0) {
-				return ['Encoding skipped as the maximum nesting level was reached'];
-			}
-
 			// Only log the first 5 elements of an array unless we are on debug
 			if ((int)$this->systemConfig->getValue('loglevel', 2) !== 0) {
 				$elemCount = count($arg);
@@ -257,9 +244,7 @@ class ExceptionSerializer {
 					$arg[] = 'And ' . ($elemCount - 5) . ' more entries, set log level to debug to see all entries';
 				}
 			}
-			return array_map(function ($e) use ($nestingLevel) {
-				return $this->encodeArg($e, $nestingLevel - 1);
-			}, $arg);
+			return array_map([$this, 'encodeArg'], $arg);
 		}
 
 		return $arg;

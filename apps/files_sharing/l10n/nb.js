@@ -200,6 +200,7 @@ OC.L10N.register(
     "For more info, please ask the person who sent this link." : "For mer informasjon, spør personen som sendte lenken.",
     "Share note" : "Delingsnotat",
     "Toggle grid view" : "Veksle rutenett-visning",
+    "Download %s" : "Last ned %s",
     "Upload files to %s" : "Last opp filer til %s",
     "Note" : "Melding",
     "Select or drop files" : "Velg eller slipp filer",
@@ -208,7 +209,6 @@ OC.L10N.register(
     "Add to your Nextcloud" : "Legg til i din Nextcloud",
     "invalid permissions" : "Ugyldige rettigheter",
     "Can't change permissions for public share links" : "Kan ikke endre rettigheter for offentlige lenker",
-    "Name, email, or federated cloud ID …" : "Navn, epost eller sammenknyttet sky-ID ...",
-    "Download %s" : "Last ned %s"
+    "Name, email, or federated cloud ID …" : "Navn, epost eller sammenknyttet sky-ID ..."
 },
 "nplurals=2; plural=(n != 1);");

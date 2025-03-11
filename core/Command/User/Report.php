@@ -90,9 +90,6 @@ class Report extends Command {
 			$rows[] = ['user directories', $userDirectoryCount];
 		}
 
-		$activeUsers = $this->userManager->countSeenUsers();
-		$rows[] = ['active users', $activeUsers];
-
 		$disabledUsers = $this->config->getUsersForUserValue('core', 'enabled', 'false');
 		$disabledUsersCount = count($disabledUsers);
 		$rows[] = ['disabled users', $disabledUsersCount];

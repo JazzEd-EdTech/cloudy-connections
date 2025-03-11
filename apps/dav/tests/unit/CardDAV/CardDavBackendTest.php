@@ -46,7 +46,6 @@ use OCP\IGroupManager;
 use OCP\IL10N;
 use OCP\IUserManager;
 use OCP\IUserSession;
-use OCP\L10N\IFactory;
 use OCP\Share\IManager as ShareManager;
 use Sabre\DAV\Exception\BadRequest;
 use Sabre\DAV\PropPatch;
@@ -142,7 +141,6 @@ class CardDavBackendTest extends TestCase {
 				$this->createMock(ProxyMapper::class),
 				$this->createMock(KnownUserService::class),
 				$this->createMock(IConfig::class),
-				$this->createMock(IFactory::class)
 			])
 			->setMethods(['getPrincipalByPath', 'getGroupMembership'])
 			->getMock();

@@ -57,9 +57,6 @@ class TwoFactorChallengeControllerTest extends TestCase {
 	/** @var IURLGenerator|\PHPUnit\Framework\MockObject\MockObject */
 	private $urlGenerator;
 
-	/** @var ILogger|\PHPUnit\Framework\MockObject\MockObject */
-	private $logger;
-
 	/** @var TwoFactorChallengeController|\PHPUnit\Framework\MockObject\MockObject */
 	private $controller;
 
@@ -71,7 +68,6 @@ class TwoFactorChallengeControllerTest extends TestCase {
 		$this->userSession = $this->createMock(IUserSession::class);
 		$this->session = $this->createMock(ISession::class);
 		$this->urlGenerator = $this->createMock(IURLGenerator::class);
-		$this->logger = $this->createMock(ILogger::class);
 
 		$this->controller = $this->getMockBuilder(TwoFactorChallengeController::class)
 			->setConstructorArgs([
@@ -81,7 +77,6 @@ class TwoFactorChallengeControllerTest extends TestCase {
 				$this->userSession,
 				$this->session,
 				$this->urlGenerator,
-				$this->logger,
 			])
 			->setMethods(['getLogoutUrl'])
 			->getMock();

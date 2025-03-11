@@ -124,11 +124,9 @@ OC.L10N.register(
     "Could not lock path" : "Impossibile bloccare il percorso",
     "Wrong or no update parameter given" : "Parametro fornito non valido o non di aggiornamento",
     "Cannot change permissions for public share links" : "Impossibile cambiare i permessi per i collegamenti di condivisione pubblici",
-    "\"Sending the password by Nextcloud Talk\" for sharing a file or folder failed because Nextcloud Talk is not enabled." : "\"Invio della password da Nextcloud Talk\" per condividere un file o una cartella non è riuscito poiché Nextcloud Talk non è attivato.",
     "shared by %s" : "condiviso da %s",
     "Download all files" : "Scarica tutti i file",
     "Direct link" : "Collegamento diretto",
-    "Add to your %s" : "Aggiungi al tuo %s",
     "Share API is disabled" : "API di condivisione disabilitate",
     "File sharing" : "Condivisione di file",
     "Share will expire tomorrow" : "La condivisione scadrà domani",
@@ -230,6 +228,7 @@ OC.L10N.register(
     "For more info, please ask the person who sent this link." : "Per ulteriori informazioni, chiedi alla persona che ti ha inviato il collegamento.",
     "Share note" : "Condividi nota",
     "Toggle grid view" : "Commuta la vista a griglia",
+    "Download %s" : "Scarica %s",
     "Upload files to %s" : "Carica file su %s",
     "Note" : "Nota",
     "Select or drop files" : "Seleziona o deseleziona file",
@@ -240,7 +239,6 @@ OC.L10N.register(
     "invalid permissions" : "permessi non validi",
     "Can't change permissions for public share links" : "Impossibile cambiare i permessi per i collegamenti di condivisione pubblici",
     "Sharing sending the password by Nextcloud Talk failed because Nextcloud Talk is not enabled" : "La condivisione tramite invio della password da Nextcloud Talk non è  riuscito poiché Nextcloud Talk non è abilitato",
-    "Name, email, or federated cloud ID …" : "Nome, email o ID di cloud federata...",
-    "Download %s" : "Scarica %s"
+    "Name, email, or federated cloud ID …" : "Nome, email o ID di cloud federata..."
 },
 "nplurals=2; plural=(n != 1);");

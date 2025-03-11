@@ -29,10 +29,7 @@ if [ -z "$PHP_EXE" ]; then
 	PHP_EXE=php
 fi
 PHP=$(which "$PHP_EXE")
-if [ -z "$PHPUNIT_EXE" ]; then
-    PHPUNIT_EXE=phpunit
-fi
-PHPUNIT=$(which "$PHPUNIT_EXE")
+PHPUNIT=$(which phpunit)
 
 set -e
 
